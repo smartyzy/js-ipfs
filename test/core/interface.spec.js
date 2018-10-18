@@ -72,13 +72,12 @@ describe('interface-ipfs-core tests', () => {
     }
   }))
 
-  /*
   tests.namePubsub(CommonFactory.create({
     spawnOptions: {
       args: ['--enable-namesys-pubsub'],
       initOptions: { bits: 1024 }
     }
-  })) */
+  }))
 
   tests.object(defaultCommonFactory)
 
