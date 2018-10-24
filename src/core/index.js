@@ -14,7 +14,7 @@ const PeerBook = require('peer-book')
 const multibase = require('multibase')
 const CID = require('cids')
 const debug = require('debug')
-const extend = require('deep-extend')
+const defaultsDeep = require('@nodeutils/defaults-deep')
 const EventEmitter = require('events')
 
 const config = require('./config')
@@ -30,7 +30,7 @@ class IPFS extends EventEmitter {
   constructor (options) {
     super()
 
-    this._options = {
+    const defaults = {
       init: true,
       start: true,
       EXPERIMENTAL: {},
@@ -45,7 +45,7 @@ class IPFS extends EventEmitter {
 
     options = config.validate(options || {})
 
-    extend(this._options, options)
+    this._options = defaultsDeep(options, defaults)
 
     if (options.init === false) {
       this._options.init = false
